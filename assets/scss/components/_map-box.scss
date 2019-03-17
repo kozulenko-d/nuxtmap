@@ -1,0 +1,92 @@
+.map-box{
+	background-color: $black;
+	& > .container{
+		display: flex;
+	}
+	& * {
+		color: $white;
+		font-weight: 300;
+	}
+	&__offices, &__location{
+		flex-basis: 50%;
+	}
+	&__offices{
+		padding: 100px 0;
+		&-heading{
+			font-size: 24px;
+			text-transform: capitalize;
+		}
+		&-items{
+			margin: 48px auto;
+		}
+		&-item{
+			display: inline-block;
+			margin-right: 24px;
+			font-size: 9px;
+			font-weight: 700;
+			list-style-type: none;
+			text-transform: uppercase;
+			&.active, &:hover{
+				color: $main-color;
+				cursor: pointer;
+			}
+		}
+		&-company{
+			font-size: 22px;
+			margin-bottom: 36px;
+		}
+		&-address{
+			font-size: 12px;
+			font-weight: 300;
+			address {
+				font-style: normal;
+			}
+		}
+	}
+	&__location{
+		#map{
+			width: 100%;
+			min-height: 500px;
+		}
+	}
+}
+
+@include adaptive(tablet) {
+	.map-box{
+		&__offices{
+			padding: 48px 0;
+			&-items{
+				margin: 24px auto;
+			}
+			&-company{
+				font-size: 18px;
+				margin-bottom: 24px;
+			}
+		}
+		&__location{
+			#map{
+				min-height: 320px;
+			}
+		}
+	}
+}
+
+@include adaptive(mobile) {
+	.map-box{
+		position: relative;
+		& > .container{
+			flex-direction: column;
+		}
+		&__offices{
+			padding: 24px 0 344px;
+		}
+		&__location{
+			#map{
+				width: 100%;
+				position: absolute !important;
+				left: 0;
+				bottom: 0;
+			}
+		}
+	}
+}
